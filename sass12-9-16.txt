@@ -1,0 +1,150 @@
+mixins
+***scss****
+
+@mixin rounded-border{
+  border-radius:4px;
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px
+}
+
+.rounded-box{
+  @include rounded-border;
+  width:250px;
+}
+#navigation{
+  ul{
+    li{
+      @include rounded-border;
+    }
+  }
+}
+
+****css****
+.rounded-box {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  width: 250px;
+}
+
+#navigation ul li {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+=======================================================================
+=====mixins with arguments===============
+
+@mixin rounded-border($radius){
+  border-radius:$radius;
+  -moz-border-radius:$radius;
+  -webkit-border-radius:$radius;
+}
+
+.rounded-box{
+  @include rounded-border(4px);
+  width:250px;
+}
+#navigation{
+  ul{
+    li{
+      @include rounded-border(2px);
+    }
+  }
+}
+
+css
+
+.rounded-box {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  width: 250px;
+}
+
+#navigation ul li {
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+}
+========================================================
+mixins with default values
+@mixin heading($color,$size:14px)
+{
+  color:$color;
+  font-size:$size;
+}
+.h1{
+  @include heading(blue,13px);
+}
+===============================================================
+
+
+***************inheritance*********************************
+%box-border{
+  border:1px solid #ccc;
+  boder-radius:10px;
+}
+.box-1{
+  @extend %box-border;
+  width:200px;
+  height:200px;
+}
+.box-2{
+  @extend %box-border;
+  width:120px;
+  height:120px;
+}
+
+********css*********
+
+.box-1, .box-2 {
+  border: 1px solid #ccc;
+  boder-radius: 10px;
+}
+
+.box-1 {
+  width: 200px;
+  height: 200px;
+}
+
+.box-2 {
+  width: 120px;
+  height: 120px;
+}
+=============================================================
+
+class 
+
+.box-border{
+  border:1px solid #ccc;
+  boder-radius:10px;
+}
+.box-1{
+  @extend .box-border;
+  width:200px;
+  height:200px;
+}
+.box-2{
+  @extend .box-border;
+  width:120px;
+  height:120px;
+}
+
+**************css****
+.box-border, .box-1, .box-2 {
+  border: 1px solid #ccc;
+  boder-radius: 10px;
+}
+
+.box-1 {
+  width: 200px;
+  height: 200px;
+}
+
+.box-2 {
+  width: 120px;
+  height: 120px;
+}
+==============================================================
+
